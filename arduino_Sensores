@@ -1,0 +1,31 @@
+
+int sensorChuva = D4;//Pino ligado ao sensor de Chuva
+int sensorLuz = A0;  //Pino ligado ao sensor de Luz
+int statusSensorChuva;
+int statusSensorLuz;
+
+void setup()
+{
+  pinMode(sensorChuva, INPUT);   //Define pino como entrada
+  pinMode(sensorLuz, INPUT);   //Define pino como entrada
+}
+
+void loop()
+{
+  
+ statusSensorChuva = digitalRead(sensorChuva); //Le o valor do sensor PIR
+ statusSensorluz = analogRead(sensorLuz);
+
+ Serial.print("Volume da Luz está: ");
+ Serial.print(statusSensorLuz);
+ 
+ if (statusSensorChuva == LOW)  //Sem chuva, mantem led azul ligado
+ {
+    Serial.println("Sem chuva...");
+ }
+ else  //Caso seja detectado um movimento, aciona o led vermelho
+ {
+    Serial.println("Movimento Detectado...");
+ }
+}
+
